@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1380897820 source:c:\users\sapara\dropbox\breakout\src\ball.cpp
+1380901670 source:c:\users\sapara\dropbox\breakout\src\ball.cpp
 	<Box2D/Box2D.h>
 	<stdio.h>
 	<GL/gl.h>
@@ -8,9 +8,9 @@
 	"../include/Window.h"
 	"../include/gl.h"
 
-1380898147 c:\users\sapara\dropbox\breakout\include\ball.h
+1380900324 c:\users\sapara\dropbox\breakout\include\ball.h
 	"Game.h"
-	"color.h"
+	"Color.h"
 	<Box2D/Box2D.h>
 
 1380629168 source:c:\users\sapara\dropbox\breakout\src\color.cpp
@@ -29,17 +29,20 @@
 
 1380415092 c:\users\sapara\dropbox\breakout\include\perlin.h
 
-1380821543 source:c:\users\sapara\dropbox\breakout\src\gl.cpp
+1380902459 source:c:\users\sapara\dropbox\breakout\src\gl.cpp
 	"../include/gl.h"
 	"../include/Window.h"
 	"../include/Color.h"
 	<GL/gl.h>
 	<GL/glu.h>
+	<Box2D/Box2D.h>
 
-1380657593 c:\users\sapara\dropbox\breakout\include\gl.h
+1380902461 c:\users\sapara\dropbox\breakout\include\gl.h
 	"Color.h"
+	<math.h>
+	<Box2D/Box2D.h>
 
-1380897470 c:\users\sapara\dropbox\breakout\include\window.h
+1380899563 c:\users\sapara\dropbox\breakout\include\window.h
 	<iostream>
 	<Box2D/Box2D.h>
 
@@ -58,8 +61,10 @@
 1380878825 c:\users\sapara\dropbox\breakout\include\wall.h
 	"Game.h"
 
-1380878849 c:\users\sapara\dropbox\breakout\include\platform.h
+1380900640 c:\users\sapara\dropbox\breakout\include\platform.h
 	"Game.h"
+	"Color.h"
+	<Box2D/Box2D.h>
 
 1380878174 source:c:\users\sapara\dropbox\breakout\src\number.cpp
 	"../include/Random.h"
@@ -71,8 +76,14 @@
 	<ctime>
 	<cmath>
 
-1380878707 source:c:\users\sapara\dropbox\breakout\src\platform.cpp
+1380902719 source:c:\users\sapara\dropbox\breakout\src\platform.cpp
 	"../include/Platform.h"
+	<Box2D/Box2D.h>
+	<stdio.h>
+	<GL/gl.h>
+	"../include/Game.h"
+	"../include/Window.h"
+	"../include/gl.h"
 
 1380645401 source:c:\users\sapara\dropbox\breakout\src\random.cpp
 	"../include/Random.h"
@@ -89,7 +100,7 @@
 	"../include/Window.h"
 	"../include/gl.h"
 
-1380897030 source:c:\users\sapara\dropbox\breakout\src\game.cpp
+1380902989 source:c:\users\sapara\dropbox\breakout\src\game.cpp
 	<Box2D/Box2D.h>
 	"../include/Game.h"
 	"../include/Color.h"

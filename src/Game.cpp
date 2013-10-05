@@ -35,7 +35,7 @@ void Game::setup(){
     Number ballg(0,100);
     Number ballb(0,50);
     Color ballcolor = Color(ballr,ballg,ballb);
-	ball = new Ball(this,ballcolor,400,500,10);
+	ball = new Ball(this,ballcolor,400,200,10);
 
 	// kedeli romlis qveda mxarec iqneba gamtari da roca magas gaivlis mashin waagebs
 	wall = new Wall(this);
@@ -45,6 +45,7 @@ void Game::setup(){
 }
 
 void Game::update(){
+    platform->setLocation(mouseX);
     c_background_.regenerate();
 	world->Step(1.0/Window::FRAME_RATE,8,3);
 }

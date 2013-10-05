@@ -11,6 +11,7 @@ class Platform
         Platform();
         Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int hy);
         virtual ~Platform();
+        void setLocation(int x);
         void render();
     protected:
     private:

@@ -18,7 +18,7 @@ Platform::Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int h
 
     b2BodyDef bodydef;
 	bodydef.position = pos;
-	// bodydef.type=b2_dynamicBody;
+	bodydef.type=b2_kinematicBody;
 
 	body = game->world->CreateBody(&bodydef);
 
@@ -32,11 +32,18 @@ Platform::Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int h
 	fixturedef.shape=&shape;
 
 	body->CreateFixture(&fixturedef);
+}
+void Platform::setLocation( int x){
+	b2Vec2 pos = body->GetPosition();
+	world2pixel(pos);
+	pos.x = (x - pos.x)*P2M * 10;
+	pos.y = 0;
+	body->SetLinearVelocity(pos);
 
 }
 void Platform::render(){
 	b2Vec2 pos = body->GetPosition();
-	
+
 	//convert world coordinats to pixel
 	world2pixel(pos);
 

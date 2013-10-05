@@ -9,6 +9,7 @@ extern void render();
 
 using namespace Window;
 namespace Window{
+    int mouseX,mouseY;
     int WIDTH, HEIGHT;
     int displayWidth, displayHeight;
 
@@ -68,10 +69,16 @@ namespace Window{
 						}
 						break;
 	                case SDL_MOUSEBUTTONDOWN:
+						mouseX = event.button.x;
+						mouseY = event.button.y;
 						break;
 	                case SDL_MOUSEBUTTONUP:
+						mouseX = event.button.x;
+						mouseY = event.button.y;
 						break;
 					case SDL_MOUSEMOTION:
+						mouseX = event.button.x;
+						mouseY = event.button.y;
 						break;
 				}
 			}

@@ -5,11 +5,12 @@
 #include <Box2D/Box2D.h>
 
 namespace Window{
+    extern int mouseX,mouseY;
     extern int WIDTH,HEIGHT;
     extern int displayWidth, displayHeight;
     static const int HD_WIDTH = 1280, HD_HEIGHT = 720;
     static const int FRAME_RATE = 30;
-    static const float M2P=20;
+    static const float M2P=40;
     static const float P2M=1/M2P;
     int run();
     void log(std::string const &str);

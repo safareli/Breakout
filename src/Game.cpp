@@ -32,14 +32,14 @@ void Game::setup(){
     Color platformcolor = Color(platformr,platformg,platformb);
     int offset = 2;
     //width  height;
-	platform = new Platform(this,platformcolor,400,height-20,100,10,offset);
+	platform = new Platform(this,platformcolor,width/2,height-20,width/10,10,offset);
 
 	//burti
     Number ballr(100,255);
     Number ballg(0,100);
     Number ballb(0,50);
     Color ballcolor = Color(ballr,ballg,ballb);
-	ball = new Ball(this,ballcolor,400,20,10);
+	ball = new Ball(this,ballcolor,width/2,20,10);
 
 	// kedeli romlis qveda mxarec iqneba gamtari da roca magas gaivlis mashin waagebs
     Number wallr(0,20);

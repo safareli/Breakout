@@ -6,8 +6,8 @@ using namespace Window;
 Game game;
 
 void setup(){
-    // size(HD_WIDTH,HD_HEIGHT);
-    size(640,400);
+    size(HD_WIDTH,HD_HEIGHT);
+    // size(640,400);
     game.setup();
 }
 

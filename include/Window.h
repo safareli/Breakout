@@ -6,7 +6,7 @@
 
 namespace Window{
     extern int mouseX,mouseY;
-    extern int WIDTH,HEIGHT;
+    extern int width,height;
     extern int displayWidth, displayHeight;
     static const int HD_WIDTH = 1280, HD_HEIGHT = 720;
     static const int FRAME_RATE = 30;

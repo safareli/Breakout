@@ -10,7 +10,7 @@
 class Wall;
 class Ball;
 class Platform;
-class Game
+class Game : public b2ContactListener
 {
     public:
         Game();
@@ -19,6 +19,8 @@ class Game
         void update();
         void render();
         b2World* world;
+        void BeginContact(b2Contact* contact);
+        void EndContact(b2Contact* contact);
     protected:
     private:
         Color c_background_;

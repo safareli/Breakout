@@ -1,7 +1,5 @@
 #include "../include/Platform.h"
 #include <Box2D/Box2D.h>
-#include <stdio.h>
-#include <GL/gl.h>
 #include "../include/Game.h"
 #include "../include/Window.h"
 #include "../include/gl.h"

@@ -5,6 +5,7 @@
 #include "../include/Game.h"
 #include "../include/Window.h"
 #include "../include/gl.h"
+#include "../include/Random.h"
 
 using namespace Window;
 Ball::Ball(){}
@@ -33,6 +34,7 @@ Ball::Ball(Game* const thegame,Color thecolor,int thex,int they,int ther){
 	fixturedef.shape=&shape;
 
 	body->CreateFixture(&fixturedef);
+	body->ApplyLinearImpulse(b2Vec2(Random::get(-2,2),Random::get(2,3)), body->GetWorldCenter());
 
 }
 void Ball::render(){

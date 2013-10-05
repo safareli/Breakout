@@ -10,20 +10,20 @@ extern void render();
 using namespace Window;
 namespace Window{
     int mouseX,mouseY;
-    int WIDTH, HEIGHT;
+    int width, height;
     int displayWidth, displayHeight;
 
     void world2pixel(b2Vec2 &vector){
-		// b2Vec2 centerWorld(WIDTH/2,-HEIGHT/2);
+		// b2Vec2 centerWorld(width/2,-height/2);
 		// vector =  M2P * vector + centerWorld;
-		vector.x = M2P * vector.x + WIDTH/2;
-		vector.y = M2P * vector.y - HEIGHT/2;
+		vector.x = M2P * vector.x + width/2;
+		vector.y = M2P * vector.y - height/2;
     }
     void pixel2world(b2Vec2 &vector){
-		// b2Vec2 centerWorld(WIDTH/2,-HEIGHT/2);
+		// b2Vec2 centerWorld(width/2,-height/2);
 		// vector = P2M * (vector - centerWorld);
-		vector.x = P2M * (vector.x - WIDTH/2);
-		vector.y = P2M * (vector.y + HEIGHT/2);
+		vector.x = P2M * (vector.x - width/2);
+		vector.y = P2M * (vector.y + height/2);
     }
 
     void log(std::string const &str){
@@ -31,13 +31,13 @@ namespace Window{
     }
 
     void size(int w, int h){
-        WIDTH = w;
-        HEIGHT = h;
+        width = w;
+        height = h;
 
 		if(w == displayWidth && h == displayHeight)
-            SDL_SetVideoMode(WIDTH,HEIGHT,32,SDL_OPENGL | SDL_FULLSCREEN);
+            SDL_SetVideoMode(width,height,32,SDL_OPENGL | SDL_FULLSCREEN);
         else
-            SDL_SetVideoMode(WIDTH,HEIGHT,32,SDL_OPENGL);
+            SDL_SetVideoMode(width,height,32,SDL_OPENGL);
     }
 
     int run(){

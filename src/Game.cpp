@@ -10,14 +10,16 @@
 #include "../include/Ball.h"
 #include "../include/Wall.h"
 
+
 using namespace Window;
 Game::Game(){
-	world = new b2World(b2Vec2(0.0,9.81));
+	world = new b2World(b2Vec2(0.0,0.0));
 }
 Game::~Game(){
 	delete world;
 }
 void Game::setup(){
+    world->SetContactListener(this);
     Number n(0,255);
     c_background_ = Color(n,n,n);
     c_background_.setNoise(0.001f);
@@ -27,21 +29,36 @@ void Game::setup(){
     Number platformg(0,50);
     Number platformb(0,50);
     Color platformcolor = Color(platformr,platformg,platformb);
-    //WIDTH  HEIGHT;
-	platform = new Platform(this,platformcolor,400,HEIGHT-20,100,10);
+    //width  height;
+	platform = new Platform(this,platformcolor,400,height-20,100,10);
 
 	//burti
     Number ballr(100,255);
     Number ballg(0,100);
     Number ballb(0,50);
     Color ballcolor = Color(ballr,ballg,ballb);
-	ball = new Ball(this,ballcolor,400,200,10);
+	ball = new Ball(this,ballcolor,400,20,10);
 
 	// kedeli romlis qveda mxarec iqneba gamtari da roca magas gaivlis mashin waagebs
-	wall = new Wall(this);
+    Number wallr(0,20);
+    Number wallg(0,20);
+    Number wallb(0,20);
+    Color wallcolor = Color(wallr,wallg,wallb);
+	wall = new Wall(this,wallcolor);
 
 	//blocks // kubikebi romlebic unda aafetqos
 
+}
+void Game::BeginContact(b2Contact* contact){
+    b2Fixture* fixtureA = contact->GetFixtureA();
+    b2Fixture* fixtureB = contact->GetFixtureB();
+    b2Body* bodyA = fixtureA->GetBody();
+    b2Body* bodyB = fixtureB->GetBody();
+
+    void* dataA = bodyA->GetUserData();
+    void* dataB = bodyB->GetUserData();
+}
+void Game::EndContact(b2Contact* contact){
 }
 
 void Game::update(){

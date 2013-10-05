@@ -9,7 +9,7 @@ namespace GL{
 
     void init(){
 		glMatrixMode(GL_PROJECTION);
-			glOrtho(0,Window::WIDTH,Window::HEIGHT,0,-1,1);
+			glOrtho(0,Window::width,Window::height,0,-1,1);
 		glMatrixMode(GL_MODELVIEW);
 		glClearColor(0,0,0,1);
     }
@@ -74,9 +74,9 @@ namespace GL{
     }
     void polygon(float x,float y,float scale,b2Vec2* vertex,int vertexCount,bool fill){
         if(fill)
-            glBegin(GL_TRIANGLE_FAN);
+            glBegin(GL_POLYGON);
         else
-            glBegin(GL_LINE_LOOP); // glBegin(GL_QUADS);
+            glBegin(GL_LINE_STRIP); // glBegin(GL_QUADS);
 
         for(int i = 0 ; i < vertexCount ; i++ )
             glVertex2f(vertex[i].x*scale,vertex[i].y*scale);

@@ -7,7 +7,7 @@ class Wall
 {
     public:
         Wall();
-        Wall(Game* const thegame,Color thecolor);
+        Wall(Game* const thegame,Color thecolor,int offset);
         virtual ~Wall();
         void render();
     protected:

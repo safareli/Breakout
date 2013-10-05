@@ -42,7 +42,9 @@ void Ball::render(){
 	
 	//convert world coordinats to pixel
 	world2pixel(pos);
-
+	if (pos.y > height){
+		game->lose();
+	}
 	// char numstr[200]; // enough to hold all numbers up to 64-bits
 	// sprintf(numstr, "__%f_%f", pos.x,pos.y);
 	// log(numstr);

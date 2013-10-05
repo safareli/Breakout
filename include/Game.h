@@ -18,11 +18,13 @@ class Game : public b2ContactListener
         void setup();
         void update();
         void render();
+        void lose();
         b2World* world;
         void BeginContact(b2Contact* contact);
         void EndContact(b2Contact* contact);
     protected:
     private:
+        bool stop_;
         Color c_background_;
         Wall* wall;
         Ball* ball;

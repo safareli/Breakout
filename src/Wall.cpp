@@ -7,7 +7,7 @@
 
 using namespace Window;
 Wall::Wall(){}
-Wall::Wall(Game* const thegame,Color thecolor){ 
+Wall::Wall(Game* const thegame,Color thecolor,int offset){ 
 	game = thegame;
     color = thecolor;
 
@@ -19,11 +19,11 @@ Wall::Wall(Game* const thegame,Color thecolor){
 	bodydef.position = pos;
 
 	body = game->world->CreateBody(&bodydef);
+	body->SetUserData(this);
 	
 
 	int32 vertexCount = 4;
 	b2Vec2 vertices[4];
-	int offset = 2;
 
 	vertices[0].Set(offset, height - offset);
 	vertices[1].Set(offset, offset);

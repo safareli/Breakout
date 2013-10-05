@@ -9,12 +9,13 @@ class Platform
 {
     public:
         Platform();
-        Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int hy);
+        Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int hy,int offset);
         virtual ~Platform();
         void setLocation(int x);
         void render();
     protected:
     private:
+        int minX;
     	b2Body* body;
         Color color;
         Game* game;

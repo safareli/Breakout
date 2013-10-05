@@ -6,9 +6,10 @@
 
 using namespace Window;
 Platform::Platform(){}
-Platform::Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int hy){
+Platform::Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int hy,int offset){
     game = thegame;
     color = thecolor;
+    minX = hx + offset;
 
     //convert pixel coordinats to world
     b2Vec2 pos(cx,cy);
@@ -34,6 +35,11 @@ Platform::Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int h
 void Platform::setLocation( int x){
 	b2Vec2 pos = body->GetPosition();
 	world2pixel(pos);
+	if(x < minX)
+		x = minX;
+	else if(x > width - minX)
+		x = width - minX;
+
 	pos.x = (x - pos.x)*P2M * 10;
 	pos.y = 0;
 	body->SetLinearVelocity(pos);

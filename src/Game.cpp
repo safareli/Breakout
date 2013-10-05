@@ -1,4 +1,5 @@
 #include <Box2D/Box2D.h>
+#include <typeinfo>
 #include "../include/Game.h"
 #include "../include/Color.h"
 #include "../include/Number.h"
@@ -29,8 +30,9 @@ void Game::setup(){
     Number platformg(0,50);
     Number platformb(0,50);
     Color platformcolor = Color(platformr,platformg,platformb);
+    int offset = 2;
     //width  height;
-	platform = new Platform(this,platformcolor,400,height-20,100,10);
+	platform = new Platform(this,platformcolor,400,height-20,100,10,offset);
 
 	//burti
     Number ballr(100,255);
@@ -44,7 +46,7 @@ void Game::setup(){
     Number wallg(0,20);
     Number wallb(0,20);
     Color wallcolor = Color(wallr,wallg,wallb);
-	wall = new Wall(this,wallcolor);
+	wall = new Wall(this,wallcolor,offset);
 
 	//blocks // kubikebi romlebic unda aafetqos
 
@@ -57,11 +59,28 @@ void Game::BeginContact(b2Contact* contact){
 
     void* dataA = bodyA->GetUserData();
     void* dataB = bodyB->GetUserData();
+    // if( dataA == wall && dataB == ball ||
+    //     dataB == wall && dataA == ball)
+    //     log("Wall");
+
+    // if(Wall* _wall = dynamic_cast<Wall*>((Wall*)dataA)){
+    //     log("WallA");
+    // }
+    // if(Wall* _wall = dynamic_cast<Wall*>((Wall*)dataB)){
+    //     log("WallB");
+    // }
+
+    log("coll");
 }
 void Game::EndContact(b2Contact* contact){
 }
 
+void Game::lose(){
+    stop_ = true;
+}
+
 void Game::update(){
+    if(stop_) return;
     platform->setLocation(mouseX);
     c_background_.regenerate();
 	world->Step(1.0/Window::FRAME_RATE,8,3);

@@ -32,7 +32,9 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="include/Ball.h" />
+		<Unit filename="include/Block.h" />
 		<Unit filename="include/Color.h" />
+		<Unit filename="include/Entity.h" />
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/Number.h" />
 		<Unit filename="include/PVector.h" />
@@ -42,7 +44,9 @@
 		<Unit filename="include/Wall.h" />
 		<Unit filename="include/Window.h" />
 		<Unit filename="include/gl.h" />
+		<Unit filename="include/level.h" />
 		<Unit filename="src/Ball.cpp" />
+		<Unit filename="src/Block.cpp" />
 		<Unit filename="src/Color.cpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/Number.cpp" />
@@ -52,6 +56,7 @@
 		<Unit filename="src/Wall.cpp" />
 		<Unit filename="src/Window.cpp" />
 		<Unit filename="src/gl.cpp" />
+		<Unit filename="src/level.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />

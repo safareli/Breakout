@@ -9,7 +9,7 @@
 
 using namespace Window;
 Ball::Ball(){}
-Ball::Ball(Game* const thegame,Color thecolor,int thex,int they,int ther){
+Ball::Ball(Game* const thegame,Color thecolor,int thex,int they,float ther){
     game = thegame;
     color = thecolor;
 
@@ -22,24 +22,26 @@ Ball::Ball(Game* const thegame,Color thecolor,int thex,int they,int ther){
 	bodydef.type=b2_dynamicBody;
 
 	body = game->world->CreateBody(&bodydef);
+	body->SetUserData(this);
 
 	b2CircleShape shape;
 	shape.m_radius = ther * P2M;
 	shape.m_p.Set(0,0);
 
 	b2FixtureDef fixturedef;
-	fixturedef.density=1.0;// masa
+	printf("R = %f",ther);
+	fixturedef.density=13.6*13.6/double(ther*ther);// masa
 	fixturedef.friction=0; //xaxuni
 	fixturedef.restitution=1; //elastiuroba
 	fixturedef.shape=&shape;
 
 	body->CreateFixture(&fixturedef);
-	body->ApplyLinearImpulse(b2Vec2(Random::get(-2,2),Random::get(2,3)), body->GetWorldCenter());
+	body->ApplyLinearImpulse(b2Vec2(Random::get(-2,2),Random::get(1,2)), body->GetWorldCenter());
 
 }
 void Ball::render(){
 	b2Vec2 pos = body->GetPosition();
-	
+
 	//convert world coordinats to pixel
 	world2pixel(pos);
 	if (pos.y > height){
@@ -59,7 +61,7 @@ void Ball::render(){
             case b2Shape::e_circle:
                 b2CircleShape* circle = (b2CircleShape*) fixture->GetShape();
 				GL::color(color);
-				//TODO aq sheileba logika araswori iyos 
+				//TODO aq sheileba logika araswori iyos
 				b2Vec2 pos = M2P * circle->m_p;
 				GL::circle(pos.x,pos.y,circle->m_radius*M2P,true);
             break;
@@ -68,4 +70,6 @@ void Ball::render(){
     }
 	GL::endDraw();
 }
-Ball::~Ball(){}
+Ball::~Ball(){
+	body->GetWorld()->DestroyBody(body);
+}

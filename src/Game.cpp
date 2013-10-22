@@ -1,9 +1,11 @@
 #include <Box2D/Box2D.h>
-#include <typeinfo>
+#include <stdio.h>
 #include "../include/Game.h"
 #include "../include/Color.h"
 #include "../include/Number.h"
 #include "../include/Window.h"
+#include "../include/Block.h"
+#include "../include/Entity.h"
 #include "../include/gl.h"
 
 //game ellements
@@ -17,7 +19,11 @@ Game::Game(){
 	world = new b2World(b2Vec2(0.0,0.0));
 }
 Game::~Game(){
-	delete world;
+    delete platform;
+    delete ball;
+    delete wall;
+	delete level;
+    delete world;
 }
 void Game::setup(){
     world->SetContactListener(this);
@@ -39,7 +45,7 @@ void Game::setup(){
     Number ballg(0,100);
     Number ballb(0,50);
     Color ballcolor = Color(ballr,ballg,ballb);
-	ball = new Ball(this,ballcolor,width/2,20,10);
+	ball = new Ball(this,ballcolor,width/2,height*0.55,width*0.01);
 
 	// kedeli romlis qveda mxarec iqneba gamtari da roca magas gaivlis mashin waagebs
     Number wallr(0,20);
@@ -48,7 +54,7 @@ void Game::setup(){
     Color wallcolor = Color(wallr,wallg,wallb);
 	wall = new Wall(this,wallcolor,offset);
 
-	//blocks // kubikebi romlebic unda aafetqos
+    level = new Level(this,0);
 
 }
 void Game::BeginContact(b2Contact* contact){
@@ -63,14 +69,20 @@ void Game::BeginContact(b2Contact* contact){
     //     dataB == wall && dataA == ball)
     //     log("Wall");
 
-    // if(Wall* _wall = dynamic_cast<Wall*>((Wall*)dataA)){
-    //     log("WallA");
-    // }
-    // if(Wall* _wall = dynamic_cast<Wall*>((Wall*)dataB)){
-    //     log("WallB");
-    // }
 
-    log("coll");
+    Entity* a_entity =(Entity*)dataA;
+    Entity* b_entity =(Entity*)dataB;
+    if (a_entity->getEntityType() == Entity::BLOCK){
+        level->removeBlock(static_cast<Block*>(a_entity));
+        // log("BlockA");
+    }
+
+    if (b_entity->getEntityType() == Entity::BLOCK){
+        level->removeBlock(static_cast<Block*>(b_entity));
+        // log("BlockB");
+    }
+
+    // log("coll");
 }
 void Game::EndContact(b2Contact* contact){
 }
@@ -83,10 +95,12 @@ void Game::update(){
     if(stop_) return;
     platform->setLocation(mouseX);
     c_background_.regenerate();
+    level->update();
 	world->Step(1.0/Window::FRAME_RATE,8,3);
 }
 
 void Game::render(){
+    level->render();
 	ball->render();
 	wall->render();
 	platform->render();

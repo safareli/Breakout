@@ -20,7 +20,6 @@ Wall::Wall(Game* const thegame,Color thecolor,int offset){
 
 	body = game->world->CreateBody(&bodydef);
 	body->SetUserData(this);
-	
 
 	int32 vertexCount = 4;
 	b2Vec2 vertices[4];
@@ -67,4 +66,6 @@ void Wall::render(){
     }
 	GL::endDraw();
 }
-Wall::~Wall(){}
+Wall::~Wall(){
+	body->GetWorld()->DestroyBody(body);
+}

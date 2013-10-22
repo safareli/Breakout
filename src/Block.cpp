@@ -1,28 +1,37 @@
-#include "../include/Platform.h"
 #include <Box2D/Box2D.h>
-#include "../include/Game.h"
+#include "../include/Block.h"
 #include "../include/Window.h"
 #include "../include/gl.h"
+#include "../include/Random.h"
+
+#include <stdio.h>
+
+Block::~Block(){
+	body->GetWorld()->DestroyBody(body);
+}
+Block::Block(){}
+
 using namespace Window;
-Platform::Platform(){}
-Platform::Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int hy,int offset){
-    game = thegame;
-    color = thecolor;
-    minX = hx + offset;
+Block::Block(b2World* const world,int x,int y,int blockWidth,int blockHeight)
+{
+    Number r(130,250);
+    Number g(130,250);
+    Number b(130,250);
+	color = Color(r,g,b);
 
     //convert pixel coordinats to world
-    b2Vec2 pos(cx,cy);
+    b2Vec2 pos(x+blockWidth/2,y+blockHeight/2);
 	pixel2world(pos);
 
     b2BodyDef bodydef;
 	bodydef.position = pos;
 	bodydef.type=b2_kinematicBody;
 
-	body = game->world->CreateBody(&bodydef);
+	body = world->CreateBody(&bodydef);
 	body->SetUserData(this);
 
 	b2PolygonShape shape;
-	shape.SetAsBox(hx*P2M,hy*P2M);
+	shape.SetAsBox(blockWidth/2*P2M,blockHeight/2*P2M);
 
 	b2FixtureDef fixturedef;
 	fixturedef.density=1.0;// masa
@@ -32,28 +41,18 @@ Platform::Platform(Game* const thegame,Color thecolor,int cx,int cy,int hx,int h
 
 	body->CreateFixture(&fixturedef);
 }
-void Platform::setLocation( int x){
-	b2Vec2 pos = body->GetPosition();
-	world2pixel(pos);
-	if(x < minX)
-		x = minX;
-	else if(x > width - minX)
-		x = width - minX;
 
-	pos.x = (x - pos.x)*P2M * 10;
-	pos.y = 0;
-	body->SetLinearVelocity(pos);
 
-}
-void Platform::render(){
-	b2Vec2 pos = body->GetPosition();
+void Block::render()
+{
+    b2Vec2 pos = body->GetPosition();
 
 	//convert world coordinats to pixel
 	world2pixel(pos);
 
+   	// printf ("Decimals: %d %i %i\n", int(pos.x), int(pos.x),int(pos.y));
 	float angle = body->GetAngle();
 	b2Fixture* fixture = body->GetFixtureList();
-
 	GL::startDraw(pos.x,pos.y,angle);
 	while(fixture != NULL)
     {
@@ -68,8 +67,4 @@ void Platform::render(){
         fixture = fixture->GetNext();
     }
 	GL::endDraw();
-}
-
-Platform::~Platform(){
-	body->GetWorld()->DestroyBody(body);
 }

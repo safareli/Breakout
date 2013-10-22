@@ -5,9 +5,11 @@
 #include "../include/Color.h"
 #include "../include/Wall.h"
 #include "../include/Ball.h"
+#include "../include/Level.h"
 #include "../include/Platform.h"
 
 class Wall;
+class Level;
 class Ball;
 class Platform;
 class Game : public b2ContactListener
@@ -27,6 +29,7 @@ class Game : public b2ContactListener
         bool stop_;
         Color c_background_;
         Wall* wall;
+        Level* level;
         Ball* ball;
         Platform* platform;
 };

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1380993534 source:c:\users\sapara\dropbox\breakout\src\ball.cpp
+1382451472 source:c:\users\sapara\dropbox\breakout\src\ball.cpp
 	<Box2D/Box2D.h>
 	<stdio.h>
 	<GL/gl.h>
@@ -9,8 +9,9 @@
 	"../include/gl.h"
 	"../include/Random.h"
 
-1380900324 c:\users\sapara\dropbox\breakout\include\ball.h
+1382451136 c:\users\sapara\dropbox\breakout\include\ball.h
 	"Game.h"
+	"Entity.h"
 	"Color.h"
 	<Box2D/Box2D.h>
 
@@ -47,23 +48,26 @@
 	<iostream>
 	<Box2D/Box2D.h>
 
-1380982339 source:c:\users\sapara\dropbox\breakout\src\main.cpp
+1382451366 source:c:\users\sapara\dropbox\breakout\src\main.cpp
 	<iostream>
 	"../include/Window.h"
 	"../include/Game.h"
 
-1380993521 c:\users\sapara\dropbox\breakout\include\game.h
+1382441471 c:\users\sapara\dropbox\breakout\include\game.h
 	<Box2D/Box2D.h>
 	"../include/Color.h"
 	"../include/Wall.h"
 	"../include/Ball.h"
+	"../include/Level.h"
 	"../include/Platform.h"
 
-1380991267 c:\users\sapara\dropbox\breakout\include\wall.h
+1382448153 c:\users\sapara\dropbox\breakout\include\wall.h
 	"Game.h"
+	"Entity.h"
 
-1380991310 c:\users\sapara\dropbox\breakout\include\platform.h
+1382448145 c:\users\sapara\dropbox\breakout\include\platform.h
 	"Game.h"
+	"Entity.h"
 	"Color.h"
 	<Box2D/Box2D.h>
 
@@ -77,7 +81,7 @@
 	<ctime>
 	<cmath>
 
-1380991321 source:c:\users\sapara\dropbox\breakout\src\platform.cpp
+1382448203 source:c:\users\sapara\dropbox\breakout\src\platform.cpp
 	"../include/Platform.h"
 	<Box2D/Box2D.h>
 	"../include/Game.h"
@@ -90,7 +94,7 @@
 	<cstdlib>
 	<ctime>
 
-1380991260 source:c:\users\sapara\dropbox\breakout\src\wall.cpp
+1382448183 source:c:\users\sapara\dropbox\breakout\src\wall.cpp
 	"../include/Wall.h"
 	"../include/Platform.h"
 	<Box2D/Box2D.h>
@@ -98,21 +102,49 @@
 	"../include/Window.h"
 	"../include/gl.h"
 
-1380982319 source:c:\users\sapara\dropbox\breakout\src\window.cpp
+1382449850 source:c:\users\sapara\dropbox\breakout\src\window.cpp
 	<iostream>
 	<SDL/SDL.h>
 	"../include/Window.h"
 	"../include/gl.h"
 
-1380993846 source:c:\users\sapara\dropbox\breakout\src\game.cpp
+1382451059 source:c:\users\sapara\dropbox\breakout\src\game.cpp
 	<Box2D/Box2D.h>
-	<typeinfo>
+	<stdio.h>
 	"../include/Game.h"
 	"../include/Color.h"
 	"../include/Number.h"
 	"../include/Window.h"
+	"../include/Block.h"
+	"../include/Entity.h"
 	"../include/gl.h"
 	"../include/Platform.h"
 	"../include/Ball.h"
 	"../include/Wall.h"
+
+1382446770 c:\users\sapara\dropbox\breakout\include\level.h
+	"Block.h"
+	<vector>
+	<set>
+	"Game.h"
+
+1382449153 c:\users\sapara\dropbox\breakout\include\block.h
+	"Color.h"
+	"Entity.h"
+	<Box2D/Box2D.h>
+
+1382449702 source:c:\users\sapara\dropbox\breakout\src\block.cpp
+	<Box2D/Box2D.h>
+	"../include/Block.h"
+	"../include/Window.h"
+	"../include/gl.h"
+	"../include/Random.h"
+	<stdio.h>
+
+1382451946 source:c:\users\sapara\dropbox\breakout\src\level.cpp
+	"../include/Level.h"
+	"../include/Window.h"
+	<stdio.h>
+
+1382448015 c:\users\sapara\dropbox\breakout\include\entity.h
 
